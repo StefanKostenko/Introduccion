@@ -1,9 +1,9 @@
 <?php
-$color = array('blanco', 'verde', 'rojo');
+$colores = array('blanco', 'verde', 'rojo');
 
 echo "<ul>";
-foreach($color as $colores){
-    echo "<li>" . $colores . "</li>";
+foreach($colores as $color){
+    echo "<li>" . $color . "</li>";
 }
 echo "</ul>";
 ?>

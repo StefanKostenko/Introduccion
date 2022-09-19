@@ -1,4 +1,7 @@
 <?php
+
+echo "Nombre ascendente: <br>";
+
 $personas = array("Juan"=>"31","María"=>"41","Andrés"=>"39","Berta"=>"40");
 
 $perosnasNombreAsc = $personas;
@@ -9,7 +12,7 @@ foreach($perosnasNombreAsc as $nombre => $edad){
     echo "$nombre = $edad\n" . "<br>";
 }
 
-echo "<br>";
+echo "<br> Edad ascendente: <br>";
 
 $personasEdadAsc = $personas;
 
@@ -19,7 +22,7 @@ foreach($personasEdadAsc as $nombre => $edad){
     echo "$nombre = $edad\n" . "<br>";
 }
 
-echo "<br>";
+echo "<br> Nombre descendete: <br>";
 
 $perosnasNombreDes = $personas;
 
@@ -29,7 +32,7 @@ foreach($perosnasNombreDes as $nombre => $edad){
     echo "$nombre = $edad\n" . "<br>";
 }
 
-echo "<br>";
+echo "<br> Edad descendente: <br>";
 
 $personasEdadDes = $personas;
 

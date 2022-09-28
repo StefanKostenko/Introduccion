@@ -47,7 +47,7 @@ if(isset($_POST["submit"]) && isset($_FILES['imagen'])){
 
     $nombreArchivo = preg_replace("/[^A-Z0-9._-]/i", "_", $nombreArchivo);
 
-    $nombreArchivo = $nombreArchivo . rand(1, 100);
+    $nombreArchivo = $nombreArchivo;
 
     // Desplazamos el archivo si no hay errores
 
@@ -67,10 +67,11 @@ if(sizeof($_POST) !== 0){
     $estudios = $_POST['estudios'];
 
     if(sizeof($_FILES) !== 0){
-        $path = $_FILES['imagen']['full_path'];
+        $ruta = $_FILES['imagen']['name'];
     }
 
     echo "$nombre <br> $correo <br> $estudios";
+    echo "<img src='./images/$ruta'>";
 }
 
 ?>

@@ -1,4 +1,27 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        <label>Nombre: </label><br>
+        <input type="text" id="nombre" name="nombre" value=""/></input><br>
+        <label>Correo: </label><br>
+        <input type="text" id="correo" name="correo" value=""/></input><br>
+        <select name="estudios">
+            <option value="Sin estudios">Sin estudios</option>
+            <option value="ESO">ESO</option>
+            <option value="Bachillerato">Bachillerato</option>
+            <option value="Universidad">Universidad</option>
+        </select><br>
+        <input type="file" id="imagen" name="imagen"/><br>
+        <input type="submit" name="submit" value="Enviar"/>
+    </form>
+    <?php
     if ( $_SERVER["REQUEST_METHOD"] == "POST"){
         $datos = 1;
     }
@@ -70,34 +93,10 @@ if(sizeof($_POST) !== 0){
         $ruta = $_FILES['imagen']['name'];
     }
 
-    echo "$nombre <br> $correo <br> $estudios";
+    echo "$nombre <br> $correo <br> $estudios <br>";
     echo "<img src='./images/$ruta'>";
 }
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="POST" enctype="multipart/form-data">
-        <label>Nombre: </label><br>
-        <input type="text" id="nombre" name="nombre" value=""/></input><br>
-        <label>Correo: </label><br>
-        <input type="text" id="correo" name="correo" value=""/></input><br>
-        <select name="estudios">
-            <option value="Sin estudios">Sin estudios</option>
-            <option value="ESO">ESO</option>
-            <option value="Bachillerato">Bachillerato</option>
-            <option value="Universidad">Universidad</option>
-        </select><br>
-        <input type="file" id="imagen" name="imagen"/><br>
-        <input type="submit" name="submit" value="Enviar"/>
-    </form>
 </body>
 </html>

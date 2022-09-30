@@ -21,10 +21,10 @@
         <input type="file" id="imagen" name="imagen"/><br>
         <input type="submit" name="submit" value="Enviar"/>
     </form>
-    <?php
-    if ( $_SERVER["REQUEST_METHOD"] == "POST"){
-        $datos = 1;
-    }
+<?php
+if ( $_SERVER["REQUEST_METHOD"] == "POST"){
+    $datos = 1;
+}
 
 $directorioSubida = "./images/";
 

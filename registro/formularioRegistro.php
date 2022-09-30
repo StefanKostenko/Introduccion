@@ -37,6 +37,11 @@ if (sizeof($_POST) != 0){
     if($password != $confirmedPassword){
         $errores[] = "La contraseña no coincide!";
     }
+
+    if(strlen($password) == 0){
+        $errores[] = "Por favor introduzca una contraseña!";
+    }
+
     if (sizeof($errores) == 0){
         $pdoSt = $pdo->prepare('INSERT INTO users (username, email, password) VALUES ( ?, ?, ?)');
 

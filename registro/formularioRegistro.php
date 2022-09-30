@@ -1,4 +1,5 @@
 <?php
+$errores = [];
 if (sizeof($_POST) != 0){
     $opciones = array(
 
@@ -27,26 +28,24 @@ if (sizeof($_POST) != 0){
     $confirmedPassword = $_POST['confirmedPassword'] ?? "";
     $password = $_POST['password'] ?? "";
     
-    if(strlen($nombre) !== 0){
-        if(strlen($email) !== 0){
-            if($password == $confirmedPassword){
-                $pdoSt = $pdo->prepare('INSERT INTO users (username, email, password) VALUES ( ?, ?, ?)');
-
-                $pdoSt->bindParam(1, $nombre);
-                $pdoSt->bindParam(2, $email);
-                $pdoSt->bindParam(3, $password);
-        
-                $pdoSt->execute();
-            }else{
-                echo "La contraseña no coincide!";
-            }
-        }else {
-            echo "Por favor rellene el email";
-        }
-    }else{
-        echo "Por favor rellene el nombre";
+    if(strlen($nombre) == 0){
+        $errores[] = "Por favor rellene el nombre";
     }
-        
+    if(strlen($email) == 0)
+        $errores[] = "Por favor rellene el email";
+    
+    if($password != $confirmedPassword){
+        $errores[] = "La contraseña no coincide!";
+    }
+    if (sizeof($errores) == 0){
+        $pdoSt = $pdo->prepare('INSERT INTO users (username, email, password) VALUES ( ?, ?, ?)');
+
+        $pdoSt->bindParam(1, $nombre);
+        $pdoSt->bindParam(2, $email);
+        $pdoSt->bindParam(3, $password);
+
+        $pdoSt->execute();
+    }
 
     /*$usuario = $pdo->query("SELECT username, email FROM users");
 
@@ -69,6 +68,13 @@ if (sizeof($_POST) != 0){
     <title>Document</title>
 </head>
 <body>
+    <?php
+        if (sizeof($errores) > 0 ){
+            foreach ($errores as $error){
+                echo $error . "<br>";
+            }
+        }
+    ?>
     <form method="POST">
         <label>Nombre usuari@: </label><br>
         <input type="text" id="nombre" name="nombre" value=""/></input><br>

@@ -28,6 +28,7 @@ if (sizeof($_POST) != 0){
     $confirmedPassword = $_POST['confirmedPassword'] ?? "";
     $password = $_POST['password'] ?? "";
     
+    // Comprovacion errores
     if(strlen($nombre) == 0){
         $errores[] = "Por favor rellene el nombre";
     }
@@ -42,6 +43,7 @@ if (sizeof($_POST) != 0){
         $errores[] = "Por favor introduzca una contraseña!";
     }
 
+    // Si no hay errores que suba los datos a la base de datos.
     if (sizeof($errores) == 0){
         $pdoSt = $pdo->prepare('INSERT INTO users (username, email, password) VALUES ( ?, ?, ?)');
 
@@ -84,7 +86,7 @@ if (sizeof($_POST) != 0){
         <label>Nombre usuari@: </label><br>
         <input type="text" id="nombre" name="nombre" value=""/></input><br>
         <label>Correo: </label><br>
-        <input type="text" id="correo" name="correo" value=""/></input><br>
+        <input type="email" id="correo" name="correo" value=""/></input><br>
         <label>Contraseña: </label><br>
         <input type="text" id="password" name="password" value=""/></input><br>
         <label>Confirmar la contraseña: </label><br>

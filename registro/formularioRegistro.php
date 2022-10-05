@@ -1,4 +1,6 @@
 <?php
+session_start();
+echo $_SESSION['username'];
 $errores = [];
 if (sizeof($_POST) != 0){
     $opciones = array(
@@ -88,9 +90,9 @@ if (sizeof($_POST) != 0){
         <label>Correo: </label><br>
         <input type="email" id="correo" name="correo" value=""/></input><br>
         <label>Contraseña: </label><br>
-        <input type="text" id="password" name="password" value=""/></input><br>
+        <input type="password" id="password" name="password" value=""/></input><br>
         <label>Confirmar la contraseña: </label><br>
-        <input type="text" id="confirmedPassword" name="confirmedPassword" value=""/></input><br><br>
+        <input type="password" id="confirmedPassword" name="confirmedPassword" value=""/></input><br><br>
         <input type="submit" name="submit" value="Registrarse"/><br><br>
     </form>
     ¿Ya eres miembro? <a href="./login.php">Acceso usuari@s</a>

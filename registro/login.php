@@ -1,4 +1,5 @@
 <?php
+session_start();
 $errores = [];
 if (sizeof($_POST) != 0){
     // Conectar base de datos
@@ -44,7 +45,8 @@ if (sizeof($_POST) != 0){
 
     // Comprovacion rapida si ha entrado o no.
     if ($registro = $usuario->fetch()){
-            echo "Entrado";
+        echo "Entrado";
+        $_SESSION['username'] = $nombre;
     }else{
         $errores[] = "El usuario o contraseña no coinciden!";
     }
@@ -65,7 +67,7 @@ if (sizeof($_POST) != 0){
         <label>Nombre usuari@: </label><br>
         <input type="text" id="nombre" name="nombre" value=""/></input><br>
         <label>Contraseña: </label><br>
-        <input type="text" id="password" name="password" value=""/></input><br><br>
+        <input type="password" id="password" name="password" value=""/></input><br><br>
         <input type="submit" name="submit" value="Entrar"/><br><br>
     </form>
 
